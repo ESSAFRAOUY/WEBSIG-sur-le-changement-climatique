@@ -1,0 +1,1745 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+   <!--openLayers-->
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <!--end of open layers-->
+  
+ <!--Mapbox-->
+  <script src="https://api.mapbox.com/styles/v1/essafraouy/cks4oe4rh4mym17mvk9ltby7j.html?fresh=true&title=copy&access_token=pk.eyJ1IjoiZXNzYWZyYW91eSIsImEiOiJja3M0aWxwMjExcmlmMnZwamtsbmdsN2t6In0.UMH-Bp_OBv2utLSo7JCjvQ"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+ <!--end of Mapbox-->
+
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+  <title>Changement Climatique</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{% static 'css/bootstrap-theme.css'%}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'css/elegant-icons-style.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="{% static 'assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css'%}" rel="stylesheet" />
+  <link href="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.css'%}" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="{% static 'assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css'%}" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" type="text/css">
+  <link href="{% static 'css/jquery-jvectormap-1.2.2.css'%}" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/fullcalendar.css'%}">
+  <link href="{% static 'css/widgets.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/xcharts.min.css'%}" rel=" stylesheet">
+  <link href="{% static 'css/jquery-ui-1.10.4.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/myStyles.css'%}" rel="stylesheet" />
+  
+  <!-- =======================================================
+    Theme Name: NiceAdmin
+    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+<style>
+    .panel-heading{
+        margin-bottom: 0px;
+        padding: 15px;
+    }
+    .btn {
+        background-color: #2E86C1; /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 300;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        width: 185px;
+        height: 110px;
+    }
+    
+    .btn:hover {
+        
+        color: white;
+    }
+    .btn:focus {     
+       
+        color: white;   
+    }
+    .column {
+        float: left;
+        width: 185px;
+        height: 100px;
+        margin-right: 1px;
+        margin-bottom: 30px;
+    }
+
+    
+    img{
+        height: 400px;
+        width: 400px;
+        
+    }
+    .col-sm-4{
+        position: relative;
+        margin-top: -25px;
+    }
+    a{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+    td {
+        padding: 15px;
+        width: 25% ;
+        border-bottom: 2px solid white;
+        
+    
+    }
+    .txt-style{
+        text-align: center;
+        font-size:medium;
+        
+    }
+    
+    .panel-heading1 {
+        line-height: 34px;
+        /* padding: 0 15px; */
+        min-height: 34px;
+        border-left: 2px solid #394a59;
+        border-right: 2px solid #394a59;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        background: #394a59;
+        font-size: 16px;
+        color: white;
+        padding: 15px 15px 15px;
+        border-bottom: 1px solid transparent;
+        box-shadow: inset 0 -2px 0 rgb(0 0 0 / 5%);
+        -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+        -webkit-box-shadow: inset 0 -2px 0 rgb(0 0 0 / 5%);
+    }
+    .zindex{
+        z-index: -1;
+    }
+    .title{
+        margin-right: 70px;
+        margin-left: 10px;
+
+    }
+    .title1{
+        margin-left: 105px;
+    }
+    .title2{
+        margin-left: 70px;
+    }
+    img{
+        width: 100%;
+        height: 400px;
+        border-radius: 4px;
+        padding: 2px;
+        
+    }
+    .txtScroll{
+        height: 150px;
+        width: 100%;
+        margin-top: -15px;
+        overflow-y: scroll;
+        padding-left: 15px;
+    }
+
+    .icon-actions {
+        width: 45px;
+        height: 38px;
+        display: inline-block !important;
+        border-color: 0;
+        border-width: 0;
+    }
+    .icon-acteurs{
+        margin-left: 2px;
+        width: 40px;
+        height: 40px;
+        display: inline-block !important;
+        border-color: 0;
+        border-width: 0;
+    }
+   
+    #breadcrumb1 {
+        padding: 8px 15px;
+        display: inline-flex;
+        width: 100%;
+        background-color: #ffffff;
+        border: 0px solid transparent;
+        margin-bottom: 20px;
+        list-style: none;
+        height: 60px;
+
+    }
+
+   
+    select {
+        /* Reset Select */
+        appearance: none;
+        outline: 0;
+        border: 0;
+        font-size: 14px;
+        border-radius: 5px;
+        height: 30px;
+        margin-right: 10px;
+        box-shadow: none;
+        padding: 0 1em;
+        color: #fff;
+        background-color: #154360 ;
+        background-image: none;
+        cursor: pointer;
+        font-family: Lato;
+        
+    }
+    input{
+        background-color: rgb(225, 232, 233);
+        border: 1px solid rgb(158, 156, 156);
+        border-radius: 5px;
+        width: 140px;
+    }
+    label{
+        margin-right: 10px;
+
+    }
+      /* Remove IE arrow */
+      select::-ms-expand {
+        display: none;
+      }
+      /* Custom Select wrapper */
+      .select {
+        position: relative;
+        height: 3em;
+        width: 230px;
+        border-radius: 5px;
+        overflow: hidden;
+        font-family: 'Lato', sans-serif;
+      }
+     
+      /* Arrow */
+      .select::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        background-color: #154360 ;
+        transition: .25s all ease;
+        pointer-events: none;
+      }
+      /* Transition */
+    .select:hover::after{
+        color: #f39c12;
+      }
+    
+    .searchFilter{
+        
+        float: left;
+        width: 200px;
+        height: 40px;
+        text-align: left;
+        
+    }
+    .navbar-form1{
+        margin-top: 6px;
+        width: 200px;
+    }
+    
+    #sidebar1 {
+        width: 180px;
+        height: 50px;
+        position: fixed;
+        background: #394a59;
+    }
+    .showFilters{
+        position: relative;
+        width: 200px;
+        border:2px solid #394a59;
+        z-index: 1;
+        
+    }
+
+    .column1 {
+        float: left;
+        width: 230px;
+        height: 40px;
+        margin-right: 3px;
+    }
+
+    .columnCoopInd1{
+        float: left;
+        width: 160px;
+        height: 25px;
+        margin-right: 8px;
+        margin-bottom: 10px;
+    }
+    .columnCoopInd2{
+        float: left;
+        width: 170px;
+        height: 25px;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+
+    .coopStyle{
+        width: 100%;
+        height: 280px;
+        text-align: left;
+        border-top: 0;
+        overflow-y: scroll;
+    }
+    .indivStyle{
+        width: 100%;
+        height: 280px;
+        text-align: left;
+        border-top: 0;
+        overflow-y: scroll;
+    }
+    .columnLimit{
+        float: left;
+        width: 15px;
+        height: 25px;
+        margin-right: -2px;
+        margin-left: -10px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid gray;
+    }
+
+    .columnLimit1{
+        float: left;
+        width: 488px;
+        height: 25px;
+        margin-left: -16px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid gray;
+    }
+
+    .btnCoopInd{
+        border-radius: 5px 5px 0px 0px;
+        font-size: 14px;
+        font-family: sans-serif;
+        color: gray;
+        font-weight: 700;
+        border-bottom: 0;
+        display: inline-block;
+    }
+    .btnCoopInd:hover{
+        color: hotpink;
+    }
+    .btnCoopInd:focus{
+        
+        color: hotpink;
+    }
+    
+    
+    .column2 {
+        float: left;
+        width: 220px;
+        height: 40px;
+    }
+    .column3 {
+        float: left;
+        width: 202px;
+        height: 50px;
+        margin-left: 203px;
+        margin-top: 40px;
+    }
+    .selectFilter{
+        appearance: none;
+        position: absolute;
+        outline: 0;
+        border: 0;
+        width: 200px;
+        margin-bottom: 1px;
+        font-size: 14px;
+        box-shadow: none;
+        padding: 0 1em;
+        color: #fff;
+        background-color: #154360 ;
+        background-image: none;
+        cursor: pointer;
+    }
+    .selectFilter:hover::after{
+        color: #f39c12;
+      }
+    .selectFilter::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        background-color: #154360 ;
+        transition: .25s all ease;
+        pointer-events: none;
+      }
+    .selectFilter::-ms-expand {
+        display: none;
+      }
+      /* Custom Select wrapper */
+    .selectFilter {
+        position: relative;
+        text-align: left;
+        height: 3em;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+    .collapsible {
+        background-color: #154360 ;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+        height: 40px;
+        
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 14px;
+    }
+    
+    .active1, .collapsible:hover {
+        background-color: #1F618D;
+    }
+    
+    .collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 4px;
+    }
+    
+    .active1:after {
+        content: "\2212";
+    }
+    
+    .active2{
+        background-color: #1F618D;
+    }
+    .active3{
+        background-color: #2E86C1;
+    }
+    .content1 {
+        padding: 0 18px;
+        height: 100px;
+        max-height: 0;
+        margin-top: 2px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+        border-top: 0;
+        overflow-y: scroll;
+    }
+    .btnOk{
+        background-color:#f39c12 ;
+        width: 40px;
+        border-color: #f39c12;
+        border-radius: 3px;
+        color: white;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .container1 {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Hide the browser's default checkbox */
+      .container1 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      
+      /* Create a custom checkbox */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: #ccc;
+      }
+      
+      /* On mouse-over, add a grey background color */
+      .container1:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+      
+      /* When the checkbox is checked, add a blue background */
+      .container1 input:checked ~ .checkmark {
+        background-color: #f39c12;
+      }
+      
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      
+      /* Show the checkmark when checked */
+      .container1 input:checked ~ .checkmark:after {
+        display: block;
+      }
+      
+      /* Style the checkmark/indicator */
+      .container1 .checkmark:after {
+        left: 6px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    .form-control1{
+        font-size: 14px;
+        border: 1px solid #154360;
+        border-radius: 4px;
+    }
+    #contentDivbtn11{
+        z-index: 1;
+    }
+
+    .resultFiltered{
+        margin-bottom: 30px;
+    }
+
+    .labelStyle{
+        padding: 3px 3px;
+        margin-top: 15px;
+        border-radius: 25px;
+        color: hotpink;
+        font-size: 20px;
+        font-weight: 800;
+        border: 2px solid #154360;
+    }
+    .x{
+        border: 2px solid gray;
+        border-radius: 5px;
+    }
+    .btnForm{
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    
+    form{
+        margin-top: 10px;
+    }
+</style>
+
+
+</head>
+
+<body>
+  <!-- container section start -->
+    <section id="container" class="">
+
+
+        <header class="header dark-bg">
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+
+        <!--logo start-->
+        <a href="index.html" class="logo">Changement <span class="lite">Climatique</span></a>
+        <!--logo end-->
+
+        <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">
+            <li>
+                <form class="navbar-form">
+                <input class="form-control" placeholder="Search" type="text">
+                </form>
+            </li>
+            </ul>
+            <!--  search form end -->
+        </div>
+        <div class="top-nav notification-row">
+            <!-- notificatoin dropdown start-->
+            {%if user.is_authenticated%}
+            <ul class="nav pull-right top-menu">
+                
+                <!-- inbox notificatoin end -->
+                <!-- alert notification start-->
+                <li id="alert_notificatoin_bar" class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <!-- <i class="icon-bell-l" id="icon-notification-bg"></i>-->
+
+                                <span >
+                                    <img  class="icon-notification-bg" alt="" src="{% static '/img/notification-icon.png'%}">
+                                </span> 
+                                <span class="badge bg-important">7</span>
+                            </a>
+                <ul class="dropdown-menu extended notification">
+                    <div class="notify-arrow notify-arrow-blue"></div>
+                    <li>
+                    <p class="blue">You have 4 new notifications</p>
+                    </li>
+                    
+                    <li>
+                    <a href="#">See all notifications</a>
+                    </li>
+                </ul>
+                </li>
+                <!-- alert notification end-->
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        
+                    <span >
+                    <img  class="profile-icon" alt="" src="{% static 'img/profile-icon.png'%}">
+                    </span>   
+                    </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <li class="eborder-top">
+                    <a href="#"><i class="icon_profile"></i> My Profile</a>
+                    </li>
+                
+                
+                    <li>
+                    <a href="{% url 'logout' %}"><i class="icon_key_alt"></i> Log Out</a>
+                    </li>
+                    
+                    <li>
+                    <a href="documentation.html"><i class="icon_key_alt"></i> Settings</a>
+                    </li>
+                </ul>
+                </li>
+                <!-- user login dropdown end -->
+            </ul>
+            {%else%}
+            
+            <div class="login-create">   
+            <a href="{% url 'login' %}" class="a-style" id="login"> Login</a>
+            
+            <a href="{% url 'register' %}" class="a-style" id="create"> Create Account</a>
+                
+            <!-- user login dropdown end -->
+            </div>
+            
+            {%endif%}
+        </div>
+        </header>
+        <!--header end-->
+
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a class="" href="{% url 'index' %}">
+                                    <i class="icon_house_alt"></i>
+                                    <span>Home page</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a class="" href="{% url 'actors' %}">
+                                    <i class="icon_piechart"></i>
+                                    <span>Acteurs</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a class="" href="{% url 'actions' %}">
+                                    <i class="icon_genius"></i>
+                                    <span>Actions</span>
+                    </a>
+                </li>
+    
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                                    <i class="icon_document_alt"></i>
+                                    <span>Ressources</span>
+                                    <span class="menu-arrow arrow_carrot-right"></span>
+                                </a>
+                    <ul class="sub">
+                        <li><a class="" href="{% url 'documents' %}">Docuthèque</a></li>
+                        <li><a class="" href="{% url 'charts' %}">doc</a></li>
+                    </ul>
+                </li>
+                
+    
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                                    <i class="icon_documents_alt"></i>
+                                    <span>About us</span>
+                                    <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="profile.html">Profile</a></li>
+                        <li ><a class=""  href="{% url 'login' %}"><span>Login Page</span></a></li>
+                        <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
+                        <li><a class="" href="blank.html">Blank Page</a></li>
+                        <li><a class="" href="404.html">404 Error</a></li>
+                    </ul>
+                </li>
+    
+            </ul>
+            
+            <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!-- table that contains the infos about the documents-->
+        <section id="main-content">
+            <section class="wrapper">
+                
+                <div class="row">
+                    
+                    <div class="col-lg-12">
+
+                        <div class="container">
+                            <div class="column">
+                                <button id="btn1" class="btn " ><span >
+                                    <img  class="icon-actions" alt="" src="{% static '/img/icons/landuse.png'%}">
+                                  </span> <br> Occupation du sol</button> 
+                            </div>
+    
+                            <div class="column">
+                                <button id="btn2"  class="btn"><img  class="icon-actions" alt="" src="{% static '/img/icons/water.png'%}">
+                                </span> <br>Eau</button>
+                            </div>
+    
+                            <div class=" column">
+                                <button id="btn3" class="btn"><img  class="icon-actions" alt="" src="{% static '/img/icons/energy.jpg'%}">
+                                </span> <br>Energie</button>
+                            </div>
+                            <div class=" column">
+                                <button id="btn4" class="btn"><img  class="icon-actions" alt="" src="{% static '/img/icons/sea.png'%}">
+                                </span> <br>Océan <br>et zones cotières</button>
+                            </div>
+                            <div class=" column">
+                                <button id="btn5" class="btn"><img  class="icon-actions" alt="" src="{% static '/img/icons/transport.png'%}">
+                                </span> <br>Transport</button>
+                            </div>
+                            <div class=" column">
+                                <button id="btn6" class="btn"><img  class="icon-actions" alt="" src="{% static '/img/icons/industry.png'%}">
+                                </span> <br>Industrie</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="row">
+
+                    <div class="container">
+
+                        <div class="col-lg-3">
+                            
+                            <div class="resultFiltered">
+                                <p style="font-size: 20px;">
+                                    {{data.nbrActeurs}} acteurs représentent {{data.nbrActions}} actions
+                                </p>
+                            </div>
+                            
+                            <div class="labelStyle">
+                                <img id="region" class="icon-acteurs" alt="" src="{% static '/img/icons/regions.png'%}">
+                                <label  for="region">{{data.nbrRegion}} Régions</label><br>
+                            </div>
+
+                            <div class="labelStyle">
+                                <img id="investisseur" class="icon-acteurs" alt="" src="{% static '/img/icons/investisseur.png'%}">
+                                <label  for="investisseur">{{data.nbrInvestisseur}} Investisseurs</label><br>
+                            </div>
+
+                            <div class="labelStyle">
+                                <img id="entreprise" class="icon-acteurs" alt="" src="{% static '/img/icons/entreprise.png'%}">
+                                <label  for="entreprise">{{data.nbrEntreprise}} Entreprises</label><br>
+                            </div>
+
+                            <div class="labelStyle">
+                                <img id="organisation" class="icon-acteurs" alt="" src="{% static '/img/icons/organisation.png'%}">
+                                <label  for="organisation">{{data.nbrOrganisation}} Organisations</label><br>
+                            </div>
+
+                        </div>
+    
+                        <div class="col-lg-9">
+<!--******************************************** Filters**************************************--> 
+                            <div class="row">
+                                <div class="container">
+                                    <div id="breadcrumb1">
+                                        <form action="" method="GET">
+                                            {{data.filter.form}}
+                                            <button class=" btnForm btn-primary" type="submit">Search</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+<!--**********************************************************************************************************--> 
+                            <div id="allActions">
+                                <div class="container">
+                                    <button id="btnCoop" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndiv" class="btnCoopInd"> Actions individuelles</button>
+                            
+                                </div>
+
+                                <div class="x"> 
+                                    <div id="actionCoop" class="coopStyle" style="display: block;">
+                                        {% if data.actions %}
+                                        <table>
+                                            <thead style="display:none;"></thead>
+                                            <tbody>
+                                        <!--Investisseurs--> 
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 2%}
+                                                    {% for x in data.investisseurs %}
+                                                        {% for y in data.investisseurActions %}
+                                                            {% if y.action_id == c.id and y.investisseur_id == x.id %}                                                      
+                                                                <tr>
+                                                                    <td><a href="">{{ x.nom}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end investisseurs-->
+                                        <!--Entreprises-->
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 2%}
+                                                    {% for x in data.entreprises %}
+                                                        {% for y in data.entrepriseActions %}
+                                                            {% if y.action_id == c.id and y.entreprise_id == x.id %}                                                                                                               
+                                                                <tr>
+                                                                    <td><a href="">{{ x.nom}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>                                                                                                                                  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end entreprises-->
+                                        <!--Regions-->
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 2 %}
+                                                    {% for x in data.regions %}
+                                                        {% for y in data.regionsActions %}
+                                                            {% if y.action_id == c.id and y.nom_id == x.id %}                                                                                                               
+                                                                <tr>
+                                                                    <td><a href="">{{ x.region_name}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>                                                                                                                                  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end of regions-->
+                                        <!--Organisations-->
+                                        {% for c in data.actions %}
+                                            {%if c.type_action == 2%}
+                                                {% for x in data.organisations %}
+                                                    {% for y in data.organisationActions %}
+                                                        {% if y.action_id == c.id and y.organisation_id == x.id %}                                                                                                               
+                                                            <tr>
+                                                                <td><a href="">{{ x.nom}}</a></td>                                              
+                                                                {% if c.Location == 1 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Maroc</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 2 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Tunisie</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 3 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Algérie</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 4 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Egypte</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 5 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Espagne</p></td>
+                                                                {%endif%}
+                                                                <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                            </tr>                                                                                                                                  
+                                                        {%endif%}
+                                                    {%endfor%}
+                                                {%endfor%}
+                                            {%endif%}
+                                         {%endfor%}
+                                        <!--end of organisations-->
+                                        </tbody>
+                                        </table>
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+
+                                    <div id="actionIndiv" class="indivStyle" style="display: none;">
+                                        {% if data.actions %}
+                                        <table>
+                                            <thead style="display:none;"></thead>
+                                            <tbody>
+                                        <!--Investisseurs--> 
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 1 %}
+                                                    {% for x in data.investisseurs %}
+                                                        {% for y in data.investisseurActions %}
+                                                            {% if y.action_id == c.id and y.investisseur_id == x.id %}                                                      
+                                                                <tr>
+                                                                    <td><a href="">{{ x.nom}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Investisseur|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end investisseurs-->
+                                        <!--Entreprises-->
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 1 %}
+                                                    {% for x in data.entreprises %}
+                                                        {% for y in data.entrepriseActions %}
+                                                            {% if y.action_id == c.id and y.entreprise_id == x.id %}                                                                                                               
+                                                                <tr>
+                                                                    <td><a href="">{{ x.nom}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Entreprise|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>                                                                                                                                  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end entreprises-->
+                                        <!--Regions-->
+                                            {% for c in data.actions %}
+                                                {%if c.type_action == 1 %}
+                                                    {% for x in data.regions %}
+                                                        {% for y in data.regionsActions %}
+                                                            {% if y.action_id == c.id and y.nom_id == x.id %}                                                                                                               
+                                                                <tr>
+                                                                    <td><a href="">{{ x.region_name}}</a></td>                                              
+                                                                    {% if c.Location == 1 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Maroc</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 2 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Tunisie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 3 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Algérie</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 4 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Egypte</p></td>
+                                                                    {%endif%}
+                                                                    {% if c.Location == 5 %}                                             
+                                                                    <td class="txt-style"><p id="coo"> Région|Espagne</p></td>
+                                                                    {%endif%}
+                                                                    <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                                </tr>                                                                                                                                  
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    {%endfor%}
+                                                {%endif%}
+                                            {%endfor%}
+                                        <!--end of regions-->
+                                        <!--Organisations-->
+                                        {% for c in data.actions %}
+                                            {%if c.type_action == 1 %}
+                                                {% for x in data.organisations %}
+                                                    {% for y in data.organisationActions %}
+                                                        {% if y.action_id == c.id and y.organisation_id == x.id %}                                                                                                               
+                                                            <tr>
+                                                                <td><a href="">{{ x.nom}}</a></td> 
+                                                                {% if c.Location == 1 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Maroc</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 2 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Tunisie</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 3 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Algérie</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 4 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Egypte</p></td>
+                                                                {%endif%}
+                                                                {% if c.Location == 5 %}                                             
+                                                                <td class="txt-style"><p id="coo"> Organisation|Espagne</p></td>
+                                                                {%endif%}
+                                                                <td class="txt-style"><p id="coo"> {{c.nom_action}}</p></td>
+                                                            </tr>                                                                                                                                  
+                                                        {%endif%}
+                                                    {%endfor%}
+                                                {%endfor%}
+                                            {%endif%}
+                                         {%endfor%}
+                                        <!--end of organisations-->
+                                        </tbody>
+                                        </table>
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+
+                                </div>
+                            </div>                           
+<!--**********************************************************************************-->
+                            <div id="occSol" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+    
+                                <div class="x"> 
+                                    <div id="cooperative" class="coopStyle" style="display: none;">
+                                        {% if data.listeOccSol %}
+                                            {% for c in data.listeOccSol %}
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            {%endfor%}
+                                        
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle" class="indivStyle" style="display: none;">
+                                        {% if data.listeOccSol1 %}
+                                            {% for i in data.listeOccSol1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            {%endfor%}
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Eau" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative1" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle1" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+    
+                                <div class="x">
+                                    <div id="cooperative1" class="coopStyle" style="display: block;">
+                                        {% if data.listeEau %}
+                                            {% for c in data.listeEau %}
+                                            
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            
+                                            {%endfor%}
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle1" class="indivStyle" style="display: none;">
+                                        {% if data.listeEau1 %}
+                                            {% for i in data.listeEau1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                            <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="Energie" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative2" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle2" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+                                <div class="x" >
+                                    <div id="cooperative2" class="coopStyle" style="display: block;">
+                                        {% if data.listeEnergie %}
+                                            {% for c in data.listeEnergie %}
+                                            
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle2" class="indivStyle" style="display: none;">
+                                        {% if data.listeEnergie1 %}
+                                            {% for i in data.listeEnergie1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Ocean" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative3" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle3" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+                                <div class="x" >
+                                    <div id="cooperative3" class="coopStyle" style="display: block;">
+                                        {% if data.listeOcean %}
+                                            {% for c in data.listeOcean %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle3" class="indivStyle" style="display: none;">
+                                        {% if data.listeOcean1 %}
+                                            {% for i in data.listeOcean1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="Transport" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative4" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle4" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+                                <div class="x" >
+                                    <div id="cooperative4" class="coopStyle" style="display: block;">
+                                        {% if data.listeTransport %}
+                                            {% for c in data.listeTransport %}
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle4" class="indivStyle" style="display: none;">
+                                        {% if data.listeTransport1 %}
+                                            {% for i in data.listeTransport1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Industrie" style="display: none;">
+                                <div class="container">
+                                    <button id="btnCooperative5" class="btnCoopInd" >Actions Cooperatives</button> 
+                                    <button id="btnIndividuelle5" class="btnCoopInd"> Actions individuelles</button>
+                               
+                                </div>
+                                <div class="x" >
+                                    <div id="cooperative5" class="coopStyle" style="display: block;">
+                                        {% if data.listeIndustrie %}
+                                            {% for c in data.listeIndustrie %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ c.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{c.odd}}</p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+    
+        
+                                    <div id="individuelle5" class="indivStyle" style="display: none;">
+                                        {% if data.listeIndustrie1 %}
+                                            {% for i in data.listeIndustrie1 %}
+                                                
+                                                <table>
+                                                    <thead style="display:none;"></thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a href="">{{ i.nom }}</a></td>                                              
+                                                            <td class="txt-style"><p id="coo"> {{i.odd}}</p></td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            {%endfor%}
+                                        {% else%}
+                                        <h2>Pas d'actions</h2>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                           
+               
+
+
+                <div class="row">
+                   <div class="container">
+
+                    <div class="col-lg-3">
+
+                    </div>
+
+                    <div class="col-lg-9">
+                        
+
+                    </div>
+
+                
+                </div>
+
+
+
+
+                
+                    
+                
+            </section>
+
+        </section>
+    
+    </section> 
+       
+
+        
+  <!-- This is working but im gonna see it later in order to change smth-->
+  <!-- <div><canvas id="myChart1" width="800" height="400"></canvas></div>-->
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  
+  <!-- End of what i should see-->
+     
+  <!-- container section start -->
+
+  <!-- javascripts -->
+<script src="{% static 'js/jquery.js'%}"></script>
+<script src="{% static 'js/jquery-ui-1.10.4.min.js'%}"></script>
+<script src="{% static 'js/jquery-1.8.3.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-ui-1.9.2.custom.min.js'%}"></script>
+<!-- bootstrap -->
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<!-- nice scroll -->
+<script src="{% static 'js/jquery.scrollTo.min.js'%}"></script>
+<script src="{% static 'js/jquery.nicescroll.js'%}" type="text/javascript"></script>
+<!-- charts scripts -->
+<script src="{% static 'assets/jquery-knob/js/jquery.knob.js'%}"></script>
+<script src="{% static 'js/owl.carousel.js'%}"></script>
+<!-- jQuery full calendar -->
+<script src="{% static 'js/fullcalendar.min.js'%}"></script>
+<!-- Full Google Calendar - Calendar -->
+<script src="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.js'%}"></script>
+<!--script for this page only-->
+<script src="{% static 'js/calendar-custom.js'%}"></script>
+<script src="{% static 'js/jquery.rateit.min.js'%}"></script>
+<!-- custom select -->
+<script src="{% static 'js/jquery.customSelect.min.js'%}"></script>
+
+
+<!--custome script for all page-->
+<script src="{% static 'js/scripts.js'%}"></script>
+<!-- custom script for this page-->
+
+<script src="{% static 'js/jquery-jvectormap-1.2.2.min.js'%}"></script>
+<script src="{% static 'js/jquery-jvectormap-world-mill-en.js'%}"></script>
+<script src="{% static 'js/xcharts.min.js'%}"></script>
+<script src="{% static 'js/jquery.autosize.min.js'%}"></script>
+<script src="{% static 'js/jquery.placeholder.min.js'%}"></script>
+<script src="{% static 'js/gdp-data.js'%}"></script>
+<script src="{% static 'js/morris.min.js'%}"></script>
+
+<script src="{% static 'js/jquery.slimscroll.min.js'%}"></script>
+
+<!-- <script src="{% static 'js/interactions.js'%}"></script>-->
+<!--Charts.JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+
+
+<!--*********************JS code****************************-->
+<script>
+
+    
+
+    /*To show filtered actions*/
+
+    var btn = document.getElementsByClassName("btn");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+    var btn5 = document.getElementById("btn5");
+    var btn6 = document.getElementById("btn6");
+    var btnCooperative = document.getElementById("btnCooperative");
+    var btnIndividuelle = document.getElementById("btnIndividuelle");
+    var btnCooperative1 = document.getElementById("btnCooperative1");
+    var btnIndividuelle1 = document.getElementById("btnIndividuelle1");
+    var test1 = document.getElementById("btnCooperative").clicked = true;
+    var test2 = document.getElementById("btnCooperative2").clicked = true;
+   
+    var testBtn1 = document.getElementById("btn1").clicked = true;
+    
+   
+    //document.getElementById('occSol').style.display = "block";
+    
+    var btn = document.getElementsByClassName("btn");
+
+    
+
+    for (i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", function() {
+            this.classList.toggle("active2");
+        })
+        
+    }
+
+   
+    btnCooperative.onclick = function(){
+        document.getElementById('individuelle').style.display = "none";
+        var x = document.getElementById('cooperative')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle.onclick = function(){
+        document.getElementById('cooperative').style.display = "none";
+        var x = document.getElementById('individuelle')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }    
+    
+    btnCooperative1.onclick = function(){
+        document.getElementById('individuelle1').style.display = "none";
+        var x = document.getElementById('cooperative1')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle1.onclick = function(){
+        document.getElementById('cooperative1').style.display = "none";
+        var x = document.getElementById('individuelle1')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+
+    btnCooperative2.onclick = function(){
+        document.getElementById('individuelle2').style.display = "none";
+        var x = document.getElementById('cooperative2')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle2.onclick = function(){
+        document.getElementById('cooperative2').style.display = "none";
+        var x = document.getElementById('individuelle2')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+
+    btnCooperative3.onclick = function(){
+        document.getElementById('individuelle3').style.display = "none";
+        var x = document.getElementById('cooperative3')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle3.onclick = function(){
+        document.getElementById('cooperative3').style.display = "none";
+        var x = document.getElementById('individuelle3')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+    btnCooperative4.onclick = function(){
+        document.getElementById('individuelle4').style.display = "none";
+        var x = document.getElementById('cooperative4')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle4.onclick = function(){
+        document.getElementById('cooperative4').style.display = "none";
+        var x = document.getElementById('individuelle4')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+    btnCooperative5.onclick = function(){
+        document.getElementById('individuelle5').style.display = "none";
+        var x = document.getElementById('cooperative5')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+    }
+    
+    btnIndividuelle5.onclick = function(){
+        document.getElementById('cooperative5').style.display = "none";
+        var x = document.getElementById('individuelle5')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+
+    btnCoop.onclick = function(){
+        document.getElementById('actionIndiv').style.display = "none";
+        var x = document.getElementById('actionCoop')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+
+    btnIndiv.onclick = function(){
+        document.getElementById('actionCoop').style.display = "none";
+        var x = document.getElementById('actionIndiv')
+        if (x.style.display === "none") {
+            x.style.display = "block";   
+        } 
+
+    }
+
+    btn1.onclick = function(){
+       
+        document.getElementById('occSol').style.display = "block";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+        document.getElementById('Industrie').style.display = "none";
+    }
+    //whzt i added
+    /*btnRegion.onclick = function(){
+       
+        document.getElementById('allRegions').style.display = "block";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+        document.getElementById('occSol').style.display = "none";}*/
+//*************************************
+    if(test1==true){
+        document.getElementById('cooperative').style.display = "block";
+        document.getElementById('individuelle').style.display = "none";
+        
+    }
+
+  
+
+    btn2.onclick = function(){
+        document.getElementById('Eau').style.display = "block";
+        document.getElementById('occSol').style.display = "none";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('Industrie').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+    }
+    btn3.onclick = function(){
+        document.getElementById('Energie').style.display = "block";
+        document.getElementById('occSol').style.display = "none";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('Industrie').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+    }
+    btn4.onclick = function(){
+        document.getElementById('Ocean').style.display = "block";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('occSol').style.display = "none";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('Industrie').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+    }
+    btn5.onclick = function(){
+        document.getElementById('Transport').style.display = "block";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('occSol').style.display = "none";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('Industrie').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+    }
+    btn6.onclick = function(){
+        document.getElementById('Industrie').style.display = "block";
+        document.getElementById('Transport').style.display = "none";
+        document.getElementById('Ocean').style.display = "none";
+        document.getElementById('Energie').style.display = "none";
+        document.getElementById('occSol').style.display = "none";
+        document.getElementById('Eau').style.display = "none";
+        document.getElementById('allActions').style.display = "none";
+    }
+    
+    
+    
+   
+   
+    
+
+</script>
+
+
+
+    
+<!--*************************************End of JS code********************************-->
+    
+ 
+</body>

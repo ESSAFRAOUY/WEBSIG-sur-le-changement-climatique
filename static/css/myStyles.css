@@ -1,0 +1,181 @@
+
+
+  .space{
+    margin-top: 10px;
+  }
+  .btn-informations {
+    background-color:#3CE11F; /* Green */
+    border: orange;
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 11px 5px 11px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    float: left;
+  }
+
+  .btn-temperature {
+    background-color: orange; /* Green */
+    border: orange;
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 11px 5px 11px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 120px;
+    float: left;
+  }
+  .btn-precipitations {
+    background-color:#1F7AE1; /* Green */
+    border: orange;
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 11px 5px 11px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 120px;
+    float: left;
+  }
+
+  .btn-precipitations:hover,.btn-temperature:hover,.btn-informations:hover {
+    background-color: #34495e;
+  }
+  .mainselect{
+    display: flex;
+  }
+ 
+  select {
+    flex: 1;
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+   
+    /* Personalize */
+    padding: 0 1em;
+    color: #fff;
+    background-color: #34495e;
+    background-image: none;
+    cursor: pointer;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  /* Custom Select wrapper */
+  .select {
+    position: relative;
+    display: flex;
+    height: 3em;
+    border-radius: 5px;
+    overflow: hidden;
+   
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    background-color: #34495e;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+  /* Transition */
+  .select:hover::after{
+    color: #f39c12;
+  }
+  
+  .login-create{
+    margin-top: 5px ;
+    display: flex;
+  }
+    .a-style{
+      border-radius: 5px;
+      border:#f39c12;
+      text-align: center;
+      border-width: 5px;
+      
+      
+    }
+
+    
+    
+    .a-style:hover, .a-style:active {
+      background-color: #34495e;
+      color: white;
+    }
+    #login{
+      margin-left: -100px;
+    }
+    #create{
+      margin-left: 10px;
+    }
+    .a-style:link, .a-style:visited {
+      
+      color:white;
+      border: 2px solid orange;
+      padding: 5px 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+      
+    }
+
+    .username1 {
+      font-size: 14px;
+
+      color:orange;
+    }
+
+.profile-icon{
+  margin-top: 2px;
+  vertical-align: middle;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+}
+.profile-icon:hover{
+  background-color:orange;
+}
+
+.header-fstyle{
+  display: flex;
+}
+
+
+.icon-notification-bg{
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: -8px;
+ 
+}
+.icon-notification-bg:hover{
+  background-color: orange;
+
+}
+.icon-settings{
+  background: url('img/setting.png');
+  vertical-align: middle;
+  width: 25px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block !important;
+}
+ 
+
+.setting-style{
+  margin-top: -30px;
+  
+}
+
+
+

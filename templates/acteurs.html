@@ -1,0 +1,770 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+   <!--openLayers-->
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <!--end of open layers-->
+  
+ <!--Mapbox-->
+  <script src="https://api.mapbox.com/styles/v1/essafraouy/cks4oe4rh4mym17mvk9ltby7j.html?fresh=true&title=copy&access_token=pk.eyJ1IjoiZXNzYWZyYW91eSIsImEiOiJja3M0aWxwMjExcmlmMnZwamtsbmdsN2t6In0.UMH-Bp_OBv2utLSo7JCjvQ"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+ <!--end of Mapbox-->
+
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+  <title>Changement Climatique</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{% static 'css/bootstrap-theme.css'%}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'css/elegant-icons-style.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="{% static 'assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css'%}" rel="stylesheet" />
+  <link href="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.css'%}" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="{% static 'assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css'%}" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" type="text/css">
+  <link href="{% static 'css/jquery-jvectormap-1.2.2.css'%}" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/fullcalendar.css'%}">
+  <link href="{% static 'css/widgets.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/xcharts.min.css'%}" rel=" stylesheet">
+  <link href="{% static 'css/jquery-ui-1.10.4.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/myStyles.css'%}" rel="stylesheet" />
+  
+  <!-- =======================================================
+    Theme Name: NiceAdmin
+    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+<style>
+    .panel-heading{
+        margin-bottom: 0px;
+        padding: 15px;
+    }
+    .btn {
+        background-color: rgb(14, 115, 199); /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 300;
+        display: inline-block;
+        font-size: 22px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        width: 275px;
+        height: 65px;
+      }
+    .btn:hover {
+        background-color:#1F618D;
+        color: white;
+    }
+    .btn:focus {     
+        background-color:#1F618D;
+        color: white;   
+    }
+    
+    .column {
+        float: left;
+        width: 275px;
+        
+        height: 100px;
+        margin-right: 5px;
+    }
+    img{
+        height: 400px;
+        width: 400px;
+        
+    }
+    .col-sm-4{
+        position: relative;
+        margin-top: -25px;
+    }
+    a{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+    td {
+        padding: 15px;
+        width: 25% ;
+        border-bottom: 2px solid #ddd;
+        
+    
+    }
+    .txt-style{
+        text-align: center;
+        font-size:medium;
+    }
+    
+    .panel-heading1 {
+        line-height: 34px;
+        /* padding: 0 15px; */
+        min-height: 34px;
+        border-left: 2px solid #394a59;
+        border-right: 2px solid #394a59;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        position: relative;
+        background: #394a59;
+        font-size: 16px;
+        color: white;
+        padding: 15px 15px 15px;
+        border-bottom: 1px solid transparent;
+        box-shadow: inset 0 -2px 0 rgb(0 0 0 / 5%);
+        -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+        -webkit-box-shadow: inset 0 -2px 0 rgb(0 0 0 / 5%);
+    }
+    .title{
+        margin-right: 70px;
+        margin-left: 10px;
+
+    }
+    .title1{
+        margin-left: 105px;
+    }
+    .title2{
+        margin-left: 70px;
+    }
+    img{
+        width: 100%;
+        height: 400px;
+       
+        border-top: none;
+        padding: 2px;
+        
+    }
+    .txtScroll{
+        height: 130px;
+        width: 100%;
+        
+        overflow-y: scroll;
+        padding-left: 15px;
+    }
+    .txtNoscroll{
+        height: 130px;
+        width: 100%;
+        padding-left: 15px;
+    }
+    .panel-body{
+        padding: 0px;
+    }
+    
+</style>
+
+
+</head>
+
+<body>
+  <!-- container section start -->
+    <section id="container" class="">
+
+
+        <header class="header dark-bg">
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+
+        <!--logo start-->
+        <a href="index.html" class="logo">Changement <span class="lite">Climatique</span></a>
+        <!--logo end-->
+
+        <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">
+            <li>
+                <form class="navbar-form">
+                <input class="form-control" placeholder="Search" type="text">
+                </form>
+            </li>
+            </ul>
+            <!--  search form end -->
+        </div>
+        <div class="top-nav notification-row">
+            <!-- notificatoin dropdown start-->
+            {%if user.is_authenticated%}
+            <ul class="nav pull-right top-menu">
+                
+                <!-- inbox notificatoin end -->
+                <!-- alert notification start-->
+                <li id="alert_notificatoin_bar" class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <!-- <i class="icon-bell-l" id="icon-notification-bg"></i>-->
+
+                                <span >
+                                    <img  class="icon-notification-bg" alt="" src="{% static '/img/notification-icon.png'%}">
+                                </span> 
+                                <span class="badge bg-important">7</span>
+                            </a>
+                <ul class="dropdown-menu extended notification">
+                    <div class="notify-arrow notify-arrow-blue"></div>
+                    <li>
+                    <p class="blue">You have 4 new notifications</p>
+                    </li>
+                    
+                    <li>
+                    <a href="#">See all notifications</a>
+                    </li>
+                </ul>
+                </li>
+                <!-- alert notification end-->
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        
+                    <span >
+                    <img class="profile-icon" alt="profile-icon" src="{% static 'img/profile-icon.png'%}">
+                    </span>   
+                    </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <li class="eborder-top">
+                    <a href="#"><i class="icon_profile"></i> My Profile</a>
+                    </li>
+                
+                
+                    <li>
+                    <a href="{% url 'logout' %}"><i class="icon_key_alt"></i> Log Out</a>
+                    </li>
+                    
+                    <li>
+                    <a href="documentation.html"><i class="icon_key_alt"></i> Settings</a>
+                    </li>
+                </ul>
+                </li>
+                <!-- user login dropdown end -->
+            </ul>
+            {%else%}
+            
+            <div class="login-create">   
+            <a href="{% url 'login' %}" class="a-style" id="login"> Login</a>
+            
+            <a href="{% url 'register' %}" class="a-style" id="create"> Create Account</a>
+                
+            <!-- user login dropdown end -->
+            </div>
+            
+            {%endif%}
+        </div>
+        </header>
+        <!--header end-->
+
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">
+                <li class="active">
+                <a class="" href="{% url 'index' %}">
+                                <i class="icon_house_alt"></i>
+                                <span>Home page</span>
+                            </a>
+                </li>
+    
+                <li>
+                <a class="" href="{% url 'actors' %}">
+                                <i class="icon_piechart"></i>
+                                <span>Acteurs</span>
+                            </a>
+                </li>
+    
+                <li>
+                <a class="" href="{% url 'actions' %}">
+                                <i class="icon_genius"></i>
+                                <span>Actions</span>
+                            </a>
+                </li>
+    
+                <li class="sub-menu">
+                <a href="javascript:;" class="">
+                                <i class="icon_document_alt"></i>
+                                <span>Ressources</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                <ul class="sub">
+                    <li><a class="" href="{% url 'documents' %}">Docuthèque</a></li>
+                    <li><a class="" href="{% url 'charts' %}">doc</a></li>
+                </ul>
+                </li>
+                
+    
+                <li class="sub-menu">
+                <a href="javascript:;" class="">
+                                <i class="icon_documents_alt"></i>
+                                <span>About us</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                <ul class="sub">
+                    <li><a class="" href="profile.html">Profile</a></li>
+                    <li ><a class=""  href="{% url 'login' %}"><span>Login Page</span></a></li>
+                    <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
+                    <li><a class="" href="blank.html">Blank Page</a></li>
+                    <li><a class="" href="404.html">404 Error</a></li>
+                </ul>
+                </li>
+    
+            </ul>
+            
+            <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!-- table that contains the infos about the documents-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="icon_document_alt"></i> Acteurs</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                            <li><i class="icon_document_alt"></i>Acteurs</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    
+                    <div class="col-lg-12">
+
+                      <div class="container">
+                            <div class="column">
+                                <button id="btn1" class="btn" >Régions</button> 
+                            </div>
+
+                            <div class="column">
+                                <button id="btn2"  class="btn">Entreprises</button>
+                            </div>
+
+                            <div class=" column">
+                                <button id="btn3" class="btn">Investisseurs</button>
+                            </div>
+                            <div class=" column">
+                                <button id="btn4" class="btn">Organisations</button>
+                            </div>
+                      </div>
+                    </div>
+                
+                </div>
+
+                
+                <div class="row ">
+                    <!--start of div that contain static informations as small description-->
+                    <div class="col-lg-5" id="contentDivbtn11" style="display:block;">
+                        <section class="panel">
+                            <header class="panel-heading">Régions</header>
+                            <div class="panel-body " >
+                                <p class="txtNoscroll"> 
+                                    Le changement climatique est un problème mondial avec des solutions locales - rendues plus efficaces lorsqu'elles trouvent une ampleur et une portée grâce à des efforts régionaux de coopération.
+
+                                    Les régions transforment leurs défis et leurs atouts communs en action climatique, éliminant les barrières pour le bien de la planète.
+                                </p>
+                                <span  class="style-image">
+                                    <img  alt="regions" src="{% static '/img/regions.png'%}">
+                                </span> 
+                            </div>
+                            
+                        </section>
+                    </div>
+
+                    <div class="col-lg-5" id="contentDivbtn22" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading">Entreprises</header>
+                            <div class="panel-body " >
+                                <p class="txtScroll">
+                                    Les entreprises intelligentes, publiques et privées, comprennent les risques et les opportunités associés au changement climatique. Plus de 1 200 entreprises mondiales s'apprêtent à adopter un prix du carbone, d'autres s'engagent dans les énergies renouvelables, le recyclage et l'investissement dans l'action climatique.
+
+                                    Une entreprise qui mesure et réduit ses émissions fait ce qu'il faut pour l'environnement et a une belle histoire à raconter. Cette même entreprise prend correctement en compte les risques et les gère de manière appropriée.
+                                </p>
+                                <span  class="style-image">
+                                    <img  alt="entreprises" src="{% static '/img/entreprise.jpg'%}">
+                                </span> 
+                            </div>
+                            
+                        </section>
+                    </div>
+
+                    <div class="col-lg-5" id="contentDivbtn33" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading">Investisseurs</header>
+                            <div class="panel-body " >
+                                <div class="txtScroll">
+                                    <p > 
+                                        Le changement climatique doit être pris en compte dans la prise de décision et des investissements intelligents doivent être faits pour mobiliser les ressources nécessaires pour lutter contre le changement climatique. Il est au service de la planète et des investisseurs. Les investissements dans les infrastructures compatibles avec le climat, par exemple, permettent de réaliser des économies bien supérieures aux coûts. Il s'agit notamment de milliards de dollars économisés par an en efficacité énergétique.
+    
+                                        L'objectif est de mobiliser des flux financiers compatibles avec une voie vers de faibles émissions de gaz à effet de serre et un développement résilient au climat, en utilisant des millions pour mobiliser des milliards.
+                                    </p>
+                                </div>
+                        
+                                <span  class="style-image ">
+                                    <img alt="investisseurs" src="{% static '/img/investisseur1.jpg'%}">
+                                </span>
+                            </div>
+                            
+                        </section>
+                    </div>
+
+                    <div class="col-lg-5" id="contentDivbtn44" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading">Organisations</header>
+                            <div class="panel-body " >
+                                <p class="txtScroll">
+                                    Il est universellement reconnu qu'une action climatique plus ambitieuse et plus efficace de tous les niveaux de gouvernement, du secteur privé et de la société civile est maintenant nécessaire pour limiter la hausse de la température mondiale à 1,5 degré Celsius et éviter les pires effets du changement climatique.
+
+                                    Poussés par l'urgence d'intensifier l'action climatique, d'innombrables acteurs, y compris des organisations de la société civile, grandes et petites, ont pris des initiatives innovantes et des engagements ambitieux.
+                                </p>
+                                <span  class="style-image">
+                                    <img  alt="" src="{% static '/img/organisation.jpeg'%}">
+                                </span>
+                            </div>
+                            
+                        </section>
+                    </div>
+                    <!--end of div that contain static informations as small description-->
+                    <div class="col-lg-7" id="contentDivbtn1" style="display:block;">
+                        <section class="panel">
+                            <header class="panel-heading1">
+                                <span class="title">Région</span>
+                                <span class="title1">Action cooperative</span>
+                                <span class="title2">Action individuelle</span>
+                            </header>
+                            <div class="panel-body ">
+                                <div >
+                                    {% for e in data.listeRegions %}
+                                    <table>
+                                        <thead style="display:none;"></thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">{{e.nom}}</a></td>                                              
+                                                <td class="txt-style"><p id="coo"> {{e.cooperative}}</p></td>
+                                                <td class="txt-style"><p id="ind"> {{e.individuelle}}</p></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {%endfor%}
+                                </div>
+                                
+                            </div>
+                            
+                        </section>
+
+                    </div>
+
+                    <div class="col-lg-7" id="contentDivbtn2" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading1">
+                                <span class="title">Entreprise</span>
+                                <span class="title1">Action cooperative</span>
+                                <span class="title2">Action individuelle</span>
+                            </header>
+                            <div class="panel-body ">
+                                <div >
+                                    {% for e in data.listEntreprises %}
+                                    <table>
+                                        <thead style="display:none;"></thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">{{e.nom}}</a></td>                                              
+                                                <td class="txt-style"><p id="coo"> {{e.cooperative}}</p></td>
+                                                <td class="txt-style"><p id="ind"> {{e.individuelle}}</p></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {%endfor%}
+                                </div>
+                                
+                            </div>
+                            
+                        </section>
+    
+                    </div>
+
+                    <div class="col-lg-7" id="contentDivbtn3" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading1">
+                                <span class="title">Investisseur</span>
+                                <span class="title1">Action cooperative</span>
+                                <span class="title2">Action individuelle</span>
+                            </header>
+                            <div class="panel-body ">
+                                <div >
+                                    {% for e in data.listeInvestisseurs %}
+                                    <table>
+                                        <thead style="display:none;"></thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">{{e.nom}}</a></td>                                              
+                                                <td class="txt-style"><p id="coo"> {{e.cooperative}}</p></td>
+                                                <td class="txt-style"><p id="ind"> {{e.individuelle}}</p></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {%endfor%}
+                                </div>
+                                
+                            </div>
+                            
+                        </section>
+                    </div>
+
+                    <div class="col-lg-7" id="contentDivbtn4" style="display:none;">
+                        <section class="panel">
+                            <header class="panel-heading1">
+                                <span class="title">Organisation</span>
+                                <span class="title1">Action cooperative</span>
+                                <span class="title2">Action individuelle</span>
+                            </header>
+                            <div class="panel-body ">
+                                <div >
+                                    {% for o in data.listeOrganisations %}
+                                    <table>
+                                        <thead style="display:none;"></thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="">{{o.nom}}</a></td>                                              
+                                                <td class="txt-style"><p id="coo"> {{o.cooperative}}</p></td>
+                                                <td class="txt-style"><p id="ind"> {{o.individuelle}}</p></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {%endfor%}
+                                </div>
+                                
+                            </div>
+                            
+                        </section>
+                            
+                        </section>
+                    </div>
+                   
+
+                </div>
+                
+                
+        
+            </section>
+
+        </section>
+    
+    </section> 
+       
+
+        
+  <!-- This is working but im gonna see it later in order to change smth-->
+  <!-- <div><canvas id="myChart1" width="800" height="400"></canvas></div>-->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  
+  <!-- End of what i should see-->
+     
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="{% static 'js/jquery.js'%}"></script>
+  <script src="{% static 'js/jquery-ui-1.10.4.min.js'%}"></script>
+  <script src="{% static 'js/jquery-1.8.3.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-ui-1.9.2.custom.min.js'%}"></script>
+  <!-- bootstrap -->
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'js/jquery.scrollTo.min.js'%}"></script>
+  <script src="{% static 'js/jquery.nicescroll.js'%}" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script src="{% static 'assets/jquery-knob/js/jquery.knob.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.js'%}"></script>
+  <!-- jQuery full calendar -->
+  <script src="{% static 'js/fullcalendar.min.js'%}"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.js'%}"></script>
+    <!--script for this page only-->
+    <script src="{% static 'js/calendar-custom.js'%}"></script>
+    <script src="{% static 'js/jquery.rateit.min.js'%}"></script>
+    <!-- custom select -->
+    <script src="{% static 'js/jquery.customSelect.min.js'%}"></script>
+    
+
+    <!--custome script for all page-->
+    <script src="{% static 'js/scripts.js'%}"></script>
+    <!-- custom script for this page-->
+    
+    <script src="{% static 'js/jquery-jvectormap-1.2.2.min.js'%}"></script>
+    <script src="{% static 'js/jquery-jvectormap-world-mill-en.js'%}"></script>
+    <script src="{% static 'js/xcharts.min.js'%}"></script>
+    <script src="{% static 'js/jquery.autosize.min.js'%}"></script>
+    <script src="{% static 'js/jquery.placeholder.min.js'%}"></script>
+    <script src="{% static 'js/gdp-data.js'%}"></script>
+    <script src="{% static 'js/morris.min.js'%}"></script>
+    
+    <script src="{% static 'js/jquery.slimscroll.min.js'%}"></script>
+    
+    <!-- <script src="{% static 'js/interactions.js'%}"></script>-->
+    <!--Charts.JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+     
+
+
+<!--*********************JS code****************************-->
+
+<script>
+
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+
+    btn2.onclick = function(){
+        document.getElementById('contentDivbtn2').style.display = "block";
+        document.getElementById('contentDivbtn22').style.display = "block";
+        document.getElementById('contentDivbtn3').style.display = "none";
+        document.getElementById('contentDivbtn33').style.display = "none";
+        document.getElementById('contentDivbtn4').style.display = "none";
+        document.getElementById('contentDivbtn44').style.display = "none";
+        document.getElementById('contentDivbtn1').style.display = "none";
+        document.getElementById('contentDivbtn11').style.display = "none";
+    }
+    btn1.onclick = function(){
+        document.getElementById('contentDivbtn2').style.display = "none";
+        document.getElementById('contentDivbtn22').style.display = "none";
+        document.getElementById('contentDivbtn3').style.display = "none";
+        document.getElementById('contentDivbtn33').style.display = "none";
+        document.getElementById('contentDivbtn4').style.display = "none";
+        document.getElementById('contentDivbtn44').style.display = "none";
+        var x = document.getElementById('contentDivbtn1')
+        var y = document.getElementById('contentDivbtn11')
+
+        if (x.style.display === "none") {
+            if(y.style.display==="none"){
+                x.style.display = "block";
+                y.style.display = "block";
+            }  
+        } 
+        else {
+            x.style.display = "none";
+            y.style.display = "none";
+          }
+       
+    }
+    btn3.onclick = function(){
+        document.getElementById('contentDivbtn2').style.display = "none";
+        document.getElementById('contentDivbtn22').style.display = "none";
+        document.getElementById('contentDivbtn1').style.display = "none";
+        document.getElementById('contentDivbtn11').style.display = "none";
+        document.getElementById('contentDivbtn4').style.display = "none";
+        document.getElementById('contentDivbtn44').style.display = "none";
+        var x = document.getElementById('contentDivbtn3')
+        var y = document.getElementById('contentDivbtn33')
+
+        if (x.style.display === "none") {
+            if(y.style.display==="none"){
+                x.style.display = "block";
+                y.style.display = "block";
+            }  
+        } 
+        else {
+            x.style.display = "none";
+            y.style.display = "none";
+          }
+       
+    }
+    btn4.onclick = function(){
+        document.getElementById('contentDivbtn2').style.display = "none";
+        document.getElementById('contentDivbtn22').style.display = "none";
+        document.getElementById('contentDivbtn3').style.display = "none";
+        document.getElementById('contentDivbtn33').style.display = "none";
+        document.getElementById('contentDivbtn1').style.display = "none";
+        document.getElementById('contentDivbtn11').style.display = "none";
+        var x = document.getElementById('contentDivbtn4')
+        var y = document.getElementById('contentDivbtn44')
+
+        if (x.style.display === "none") {
+            if(y.style.display==="none"){
+                x.style.display = "block";
+                y.style.display = "block";
+            }  
+        } 
+        else {
+            x.style.display = "none";
+            y.style.display = "none";
+          }
+       
+    }
+   
+
+</script>
+
+<script>
+
+    c=0
+    i=0
+    i1=0
+    c1=0
+    
+    regionsActions = JSON.parse('{{data.regionsActions|safe}}')
+    for (i=0; r<regionsActions.length;r++ ){
+
+        if (regionsActions[i].nom == 'Tanger - Tetouane - Al Houciema'){
+            if (regionsActions[i].action.type_action == 1){
+                c=c+1
+            }
+           
+        }
+           
+        else
+            i=i+1
+        if (regionsActions[i].nom =='Rabat-Salé-Kenitra'){
+            if (regionsActions[i].action.type_action == 2){
+                c1=c1+1
+            }
+               
+            else 
+                i1=i1+1
+        }
+        document.getElementById("coo").innerHTML=c;  
+        document.getElementById("ind").innerHTML=i; 
+        console.log(i)
+        console.log(c)
+    }
+       
+
+</script>
+    
+<!--*************************************End of JS code********************************-->
+    
+ 
+  </body>
+</html>

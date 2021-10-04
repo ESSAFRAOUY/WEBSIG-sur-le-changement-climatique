@@ -1,0 +1,1564 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+   <!--openLayers-->
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <!--end of open layers-->
+  
+ <!--Mapbox-->
+  <script src="https://api.mapbox.com/styles/v1/essafraouy/cks4oe4rh4mym17mvk9ltby7j.html?fresh=true&title=copy&access_token=pk.eyJ1IjoiZXNzYWZyYW91eSIsImEiOiJja3M0aWxwMjExcmlmMnZwamtsbmdsN2t6In0.UMH-Bp_OBv2utLSo7JCjvQ"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+ <!--end of Mapbox-->
+
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+  <title>Changement Climatique</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{% static 'css/bootstrap-theme.css'%}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'css/elegant-icons-style.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="{% static 'assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css'%}" rel="stylesheet" />
+  <link href="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.css'%}" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="{% static 'assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css'%}" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" type="text/css">
+  <link href="{% static 'css/jquery-jvectormap-1.2.2.css'%}" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/fullcalendar.css'%}">
+  <link href="{% static 'css/widgets.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/xcharts.min.css'%}" rel=" stylesheet">
+  <link href="{% static 'css/jquery-ui-1.10.4.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/myStyles.css'%}" rel="stylesheet" />
+  
+  <!-- =======================================================
+    Theme Name: NiceAdmin
+    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+  <style>
+
+    .selectYear {
+      position: relative;
+      display: flex;
+      width: 122px;
+      height: 2.5em;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+    /* Arrow */
+    .selectYear::after {
+      content: '\25BC';
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5em;
+      background-color: #34495e;
+      transition: .25s all ease;
+      pointer-events: none;
+    }
+    /* Transition */
+    .selectYear:hover::after{
+      color: #f39c12;
+    }
+
+    .bg-primary {
+    
+      background: url('../img/bg11.jpg') no-repeat center center fixed;
+      
+
+      /* Center and scale the image nicely */
+      height: 100%; 
+      background-position: center;
+      background-size: cover;
+    }
+
+  
+  
+      
+
+
+  .panel .panel-heading .panel-actions {
+
+      float: right;
+
+      margin-right: -15px;
+
+      height: 30px;
+
+      font-size: 0;
+
+    }
+    #indicateurs td{
+      border-bottom: 1px solid #ddd;
+      border-top: none;
+      border-right: 2px solid #ddd; ;
+      margin-top: -50px;
+
+    }
+    .indicateur{
+      transform:rotate(270deg);
+      text-align: center;
+      width: 60px;
+      height: 40px;
+      /*margin-top: 120px;*/
+    }
+    .panel-body {
+      padding: 0px;
+    }
+    table{
+      width: 100%;
+      vertical-align: baseline;
+      margin-bottom: 20px;
+    }
+    tr{
+      padding-right: 0px;
+    }
+    
+    .styleChart{
+      background-color:whitesmoke;
+      margin-bottom: 15px;
+      padding: 0px 10px 0px 10px;
+
+      border: 1px solid #ccc;
+      margin-top: -10px;
+    }
+    .breadcrumb1 {
+      padding: 8px 15px;
+      width: 100%;
+      background-color: #ffffff;
+      border: 0px solid transparent;
+      margin-bottom: 20px;
+      list-style: none;
+      height: 50px;
+  
+  }
+  .select {
+    position: relative;
+    flex: 1;
+    margin-right:-5px;
+    height: 2.5em;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+  }
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    background-color: #34495e;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+  .selectYear {
+    float: left;
+  }
+  .btn-informations {
+    background-color:#34495e; /* Green */
+    border: orange;
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 8px 5px 8px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    float: left;
+    width: 125px;
+  }
+  .btn-informations:hover{
+    background-color: orange;
+  }
+  .btn-temperature {
+    background-color: #34495e ; /* Green */
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 8px 5px 8px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 115px;
+    float: left;
+  }
+  .btn-temperature:hover{
+    background-color: orange;
+  }
+  .btn-precipitations {
+    background-color:#34495e; /* #1F7AE1  Green */
+    border: orange;
+    flex: 1;
+    margin-left: 5px;
+    color: white;
+    padding: 8px 5px 8px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 115px;
+    float: left;
+  }
+  .btn-precipitations:hover{
+    background-color: #1c99e0 ;
+  }
+  .btnConsultation{
+    float: left;
+    margin-right: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight:500;
+    background-color: #34495e;
+    padding: 6px 8px 6px 8px;
+    border-radius: 5px;
+    border: 0px;
+    
+  }
+  .btnConsultation::after{
+    color: white;
+  }
+  .btnConsultation:hover{
+    background-color: #3CE11F;
+    color: white;
+  }
+
+
+  .panel .panel-body-map {
+    border-width: 1px 1px 2px;
+    border-style: solid;
+    background: #f7f4ee;
+    height: 425px;
+    border-top: none;
+    border-right-color: #ccc!important;
+    border-bottom-color: #ccc!important;
+    border-left-color: #ccc!important;
+  }
+  .active2{
+    background-color: #3CE11F;
+}
+  </style>
+
+
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+      <a href="index.html" class="logo">Changement <span class="lite">Climatique</span></a>
+      <!--logo end-->
+
+      <div class="nav search-row" id="top_menu">
+        <!--  search form start -->
+        <ul class="nav top-menu">
+          <li>
+            <form class="navbar-form">
+              <input class="form-control" placeholder="Search" type="text">
+            </form>
+          </li>
+        </ul>
+        <!--  search form end -->
+      </div>
+      <div class="top-nav notification-row">
+        <!-- notficatoin dropdown start-->
+        {%if user.is_authenticated%}
+          <ul class="nav pull-right top-menu">
+            
+            <!-- inbox notificatoin end -->
+            <!-- alert notification start-->
+            <li id="alert_notificatoin_bar" class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                               <!-- <i class="icon-bell-l" id="icon-notification-bg"></i>-->
+
+                              <span >
+                                <img  class="icon-notification-bg" alt="" src="{% static '/img/notification-icon.png'%}">
+                              </span> 
+                              <span class="badge bg-important">7</span>
+                          </a>
+              <ul class="dropdown-menu extended notification">
+                <div class="notify-arrow notify-arrow-blue"></div>
+                <li>
+                  <p class="blue">You have 4 new notifications</p>
+                </li>
+                
+                <li>
+                  <a href="#">See all notifications</a>
+                </li>
+              </ul>
+            </li>
+            <!-- alert notification end-->
+            <!-- user login dropdown start-->
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      
+                <span >
+                  <img  class="profile-icon" alt="" src="{% static 'img/profile-icon.png'%}">
+                </span>   
+                </a>
+              <ul class="dropdown-menu extended logout">
+                <div class="log-arrow-up"></div>
+                <li class="eborder-top">
+                  <a href="#"><i class="icon_profile"></i> My Profile</a>
+                </li>
+              
+              
+                <li>
+                  <a href="{% url 'logout' %}"><i class="icon_key_alt"></i> Log Out</a>
+                </li>
+                
+                <li>
+                  <a href="documentation.html"><i class="icon_key_alt"></i> Settings</a>
+                </li>
+              </ul>
+            </li>
+            <!-- user login dropdown end -->
+          </ul>
+        {%else%}
+          
+        <div class="login-create">   
+          <a href="{% url 'login' %}" class="a-style" id="login"> Login</a>
+          
+          <a href="{% url 'register' %}" class="a-style" id="create"> Create Account</a>
+              
+          <!-- user login dropdown end -->
+        </div>
+        
+        {%endif%}
+      </div>
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" href="{% url 'index' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>Home page</span>
+                      </a>
+          </li>
+
+          <li class="sub-menu">
+            <a href="{% url 'actors' %}" class="">
+                          <i class="icon_piechart"></i>
+                          <span>Acteurs</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="profile.html">Régions</a></li>
+              <li ><a class=""  href="{% url 'login' %}"><span>Entreprises</span></a></li>
+              <li><a class="" href="contact.html"><span>Investisseurs</span></a></li>
+              <li><a class="" href="blank.html">Organisations</a></li>
+            </ul>
+                      
+          </li>
+
+          <li>
+            <a class="" href="{% url 'actions' %}">
+                          <i class="icon_genius"></i>
+                          <span>Actions</span>
+                      </a>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>Ressources</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{% url 'documents' %}">Docuthèque</a></li>
+              <li><a class="" href="{% url 'charts' %}">doc</a></li>
+            </ul>
+          </li>
+          
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_documents_alt"></i>
+                          <span>About us</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="profile.html">Profile</a></li>
+              <li ><a class=""  href="{% url 'login' %}"><span>Login Page</span></a></li>
+              <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
+              <li><a class="" href="blank.html">Blank Page</a></li>
+              <li><a class="" href="404.html">404 Error</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <!--overview start-->
+        <div class="row">
+          <div class="container">
+            <div class="col-lg-12">
+              <div class="breadcrumb1">
+               <button id="btnRegion" class=" btnConsultation">Consultation par Région</button>
+               <button id="btnStation" class=" btnConsultation">Consultation par Station</button>
+  
+                <div id="mainselect" style="display: none;">
+                  <div class="select">
+                    <select id="comboRegions" onchange="getSelectedLayer()">
+                      <option value="0">Select a Region</option>
+                      <option value="1">Béni mellal-Khénifra</option>
+                      <option value="2">Casablanca-Settat</option>
+                      <option value="3">Daraa-tafilalet</option>
+                      <option value="4">Eddakhla-Oued Eddahab</option>
+                      <option value="5">Fés-Meknés</option>
+                      <option value="6">Guelmim-Oued Noun</option>
+                      <option value="7">Laayoune-Sakia El Hamra</option>
+                      <option value="8">Marrakech-sefi</option>
+                      <option value="9">Oriental</option>
+                      <option value="10">Rabat-Salé-Kenitra</option>
+                      <option value="11">Souss-Massa</option>
+                      <option value="12">Tanger - Tetouane - Al Houciema</option>
+                    </select>
+                  </div>
+                
+                  <div class="selectYear">
+                    <select id="comboYear" >
+                      <option selected="selected">2020</option>
+                      <option value="1">2021</option>
+                      <option value="2">2020</option>
+                      <option value="3">2019</option>
+                      <option value="4">2018</option>
+                      <option value="5">2017</option>
+                      <option value="6">2016</option>
+                      <option value="7">2015</option>
+                    </select>
+                  </div>
+      
+                  <div class="btnyaya">
+                    <button type="button" class="btn-temperature" onclick="showChart()">Temperature</button>
+                    
+                  </div>
+                  <div class="btnyaya">
+                    <button type="button" class="btn-precipitations" onclick="showChart_Precipitations()">Precipitations</button>
+                  </div>
+                  <div class="btnyaya">
+                    <button type="button" id="otherIndicators" class="btn-informations" onclick="showIndicators()">other indicators</button>
+                  </div>
+                </div>
+  
+                <div id="mainselect1" style="display: none;">
+                  <div class="select">
+                    <select id="comboRegions1" onchange="getSelectedStation()">
+                      <option value="0">Select a Station</option>
+                      <option value="1">Larache</option>
+                      <option value="2">Oujda</option>
+                      <option value="3">Rabat</option>
+                      <option value="4">Tanger</option>
+                      <option value="5">Tétouan</option>
+                      <option value="6">Taroudount/barrage Tarhdoute</option>
+                      <option value="7">TATA</option>
+                    </select>
+                  </div>
+                
+                  <div class="selectYear">
+                    <select id="comboYear1" >
+                      <option selected="selected">2020</option>
+                      <option value="1">2021</option>
+                      <option value="2">2020</option>
+                      <option value="3">2019</option>
+                      <option value="4">2018</option>
+                      <option value="5">2017</option>
+                      <option value="6">2016</option>
+                      <option value="7">2015</option>
+                    </select>
+                  </div>
+      
+                  <div class="btnyaya">
+                    <button type="button" class="btn-temperature" onclick="showChart1()">Temperature</button>
+                    
+                  </div>
+                  <div class="btnyaya">
+                    <button type="button" class="btn-precipitations" onclick="showChart_Precipitations_Station()">Precipitations</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+        
+       
+
+        <!--Big map-->
+        <div class="row" id="bigMap">
+         <div class="container">
+            <div class="col-lg-12 col-md-10">
+              <div class="panel panel1 panel-default">
+                <div class="panel-heading">
+                  <form class="navbar-form">
+                    <h2><i class="fa fa-map-marker red"></i><strong>Régions</strong></h2>
+                    <div class="panel-actions">
+                      <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                      <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                      <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-body-map">
+                  <div id="map1" style="height:423px;"></div>
+                </div>
+              </div>
+            </div>
+         </div>
+        </div>
+       <!--end big map--> 
+        
+        
+        
+
+        <!--Small map and graphs-->
+        <div class="row" id="smallMap" style="display: none;">
+          <div class="container">
+            <div class="col-lg-8">
+              <div class="panel panel1 panel-default">
+                <div class="panel-heading">
+                  <form class="navbar-form">
+                    <h2><i class="fa fa-map-marker red"></i><strong>Régions</strong></h2>
+                    <div class="panel-actions">
+                      <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                      <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                      <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-body-map">
+                  <div id="map" style="height:423px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <!-- List starts -->
+              <div class="today-datas">
+                <!-- List #1 -->
+                <div id="temperature" class="styleChart" style="display: none;">
+                  <!-- Graph -->
+                  <div ><canvas id="myChart" width="130" height="90"></canvas></div>
+                  <!-- Text -->
+                </div>
+                <div id="temperature1" class="styleChart" style="display: none;">
+                  <!-- Graph -->
+                  <div ><canvas id="myChart1" width="130" height="90"></canvas></div>
+                  <!-- Text -->
+                </div>
+                <div id="precipitation" class="styleChart" style="display: none;">
+                  <div><canvas id="myChartPrecipitation" width="130" height="90"></div>
+                </div>
+                <div id="precipitation1" class="styleChart" style="display: none;">
+                  <div><canvas id="myChartPrecipitation1" width="130" height="90"></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Today status end -->
+
+
+
+        <div class="row">
+          <div class="container">
+            <div class="col-lg-12">
+              <div id="indicatorsTable" style="display: none;">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2><i class="fa fa-flag-o red"></i><strong>Tanger-tétouan-al hoceima</strong></h2>
+                  
+                  </div>
+                  <div class="panel-body">
+                    <table id="indicateurs" class="table bootstrap-datatable countries">
+                      <thead>
+                        <tr>
+                          <th>Acteur</th>
+                          <th>Secteur</th>
+                          <th>Horizon</th>                     
+                          <th>AC</th>
+                          <th>AIC</th>
+                          <th>Cout(Millions $)</th>
+                          <th>Valeur(Gg)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="width: 60px;" >
+                          <div class="indicateur"><h2> GES</h2></div>
+                          </td>
+                          <!--Secteur-->
+                          <td>
+                            {% for i in regions.indicateurs %}
+                            <table>
+                              <thead style="display: none;"></thead>
+                              <tr>
+                                <td style="border-right: none;width:140px">{{i.secteur}}</td>
+                              </tr>
+                            </table>
+                            {%endfor%}
+                          </td>
+                          <!--Horizon-->
+                          <td>
+                            {% for i in regions.indicateurs %}
+                            <table >
+                              <thead style="display: none;"></thead>
+                              <tr>
+                                <td style="border-right: none;">{{i.horizon}}</td>
+                              </tr>
+                            </table>
+                            {%endfor%}
+                          </td>
+                          <!--Actions conditionnelles-->
+                          <td>
+                            {% for i in regions.indicateurs %}
+                            <table>
+                              <thead style="display: none;"></thead>
+                              <tr>
+                                <td style="border-right: none;">{{i.nombre_actions_conditionnelles}}</td>
+                              </tr>
+                            </table>
+                            {%endfor%}
+                          </td>
+                          <!--Actions inconditionnelles-->
+                          <td>
+                            {% for i in regions.indicateurs %}
+                            <table>
+                              <thead style="display: none;"></thead>
+                              <tr>
+                                <td style="border-right: none;">{{i.nombre_actions_inconditionnelles}}</td>
+                              </tr>
+                            </table>
+                            {%endfor%}
+                          </td>
+                          <!--Cout-->
+                          <td>
+                            {% for i in regions.indicateurs %}
+                            <table>
+                              <thead style="display: none;"></thead>
+                              <tr>
+                                <td style="border-right: none;width:60px;">{{i.cout}}</td>
+                              </tr>
+                            </table>
+                            {%endfor%}
+                          </td>
+                          <td style="width: 300px;">
+                            <canvas id="myChart2" style="width:100%;max-width:300px"></canvas>
+                          </td>
+                          
+                        </tr>
+                      
+        
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  <!-- This is working but im gonna see it later in order to change smth-->
+  <!-- <div><canvas id="myChart1" width="800" height="400"></canvas></div>-->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  
+  <!-- End of what i should see-->
+     
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="{% static 'js/jquery.js'%}"></script>
+  <script src="{% static 'js/jquery-ui-1.10.4.min.js'%}"></script>
+  <script src="{% static 'js/jquery-1.8.3.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-ui-1.9.2.custom.min.js'%}"></script>
+  <!-- bootstrap -->
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'js/jquery.scrollTo.min.js'%}"></script>
+  <script src="{% static 'js/jquery.nicescroll.js'%}" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script src="{% static 'assets/jquery-knob/js/jquery.knob.js'%}"></script>
+  <script src="{% static 'js/jquery.sparkline.js" type="text/javascript'%}"></script>
+  <script src="{% static 'assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.js'%}"></script>
+  <!-- jQuery full calendar -->
+  <script src="{% static 'js/fullcalendar.min.js'%}"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="{% static 'assets/fullcalendar/fullcalendar/fullcalendar.js'%}"></script>
+    <!--script for this page only-->
+    <script src="{% static 'js/calendar-custom.js'%}"></script>
+    <script src="{% static 'js/jquery.rateit.min.js'%}"></script>
+    <!-- custom select -->
+    <script src="{% static 'js/jquery.customSelect.min.js'%}"></script>
+    <script src="{% static 'assets/chart-master/Chart.js'%}"></script>
+
+    <!--custome script for all page-->
+    <script src="{% static 'js/scripts.js'%}"></script>
+    <!-- custom script for this page-->
+    <script src="{% static 'js/sparkline-chart.js'%}"></script>
+    <script src="{% static 'js/easy-pie-chart.js'%}"></script>
+    <script src="{% static 'js/jquery-jvectormap-1.2.2.min.js'%}"></script>
+    <script src="{% static 'js/jquery-jvectormap-world-mill-en.js'%}"></script>
+    <script src="{% static 'js/xcharts.min.js'%}"></script>
+    <script src="{% static 'js/jquery.autosize.min.js'%}"></script>
+    <script src="{% static 'js/jquery.placeholder.min.js'%}"></script>
+    <script src="{% static 'js/gdp-data.js'%}"></script>
+    <script src="{% static 'js/morris.min.js'%}"></script>
+    <script src="{% static 'js/sparklines.js'%}"></script>
+    <script src="{% static 'js/charts.js'%}"></script>
+    <script src="{% static 'assets/chart-master/Chart.js'%}"></script>
+    <script src="{% static 'js/jquery.slimscroll.min.js'%}"></script>
+    
+    <!-- <script src="{% static 'js/interactions.js'%}"></script>-->
+    <!--Charts.JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+     
+
+
+  <!--*********************The code we will be using for the map****************************-->
+    <script>
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw': function() {
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+          navigation: true,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          singleItem: true
+
+        });
+      });
+
+      //custom select box
+
+      $(function() {
+        $('select.styled').customSelect();
+      });
+
+      /* ---------- Map ---------- */
+      /* $(function() {
+        $('#map').vectorMap({
+          map: 'world_mill_en',
+          series: {
+            regions: [{
+              values: gdpData,
+              scale: ['#000', '#000'],
+              normalizeFunction: 'polynomial'
+            }]
+          },
+          backgroundColor: '#eef3f7',
+          onLabelShow: function(e, el, code) {
+            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+          }
+        });
+      });*/
+
+      
+      
+
+
+      
+      //var mydata = JSON.parse("{{region4|escapejs}}");
+    
+
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.MapboxVector({
+              //source: new ol.source.Stamen({layer:'watercolor'})
+              //what i added
+              styleUrl: 'mapbox://styles/essafraouy/cks4oe4rh4mym17mvk9ltby7j',
+              accessToken:'pk.eyJ1IjoiZXNzYWZyYW91eSIsImEiOiJja3M0aWxwMjExcmlmMnZwamtsbmdsN2t6In0.UMH-Bp_OBv2utLSo7JCjvQ',
+            }),
+            ],
+            //end of what i added
+          
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-7.09262, 31.791702]),
+          zoom: 4
+        })
+      });
+
+    //*****************small map******************************************
+    var map1 = new ol.Map({
+      target: 'map1',
+      layers: [
+          new ol.layer.MapboxVector({
+            //source: new ol.source.Stamen({layer:'watercolor'})
+            //what i added
+            styleUrl: 'mapbox://styles/essafraouy/cks4oe4rh4mym17mvk9ltby7j',
+            accessToken:'pk.eyJ1IjoiZXNzYWZyYW91eSIsImEiOiJja3M0aWxwMjExcmlmMnZwamtsbmdsN2t6In0.UMH-Bp_OBv2utLSo7JCjvQ',
+          }),
+          ],
+          //end of what i added
+        
+      view: new ol.View({
+        center: ol.proj.fromLonLat([-7.09262, 31.791702]),
+        zoom: 4
+      })
+    });
+
+    //***********************************************************************
+
+      
+    limitesAdministratives = [
+      mydata1 = JSON.parse({{regions.reg1|safe}}),
+      mydata2 = JSON.parse({{regions.reg2|safe}}),
+      mydata3 = JSON.parse({{regions.reg3|safe}}),
+      mydata4 = JSON.parse({{regions.reg4|safe}}),
+      mydata5 = JSON.parse({{regions.reg5|safe}}),
+      mydata6 = JSON.parse({{regions.reg6|safe}}),
+      mydata7 = JSON.parse({{regions.reg7|safe}}),
+      mydata8 = JSON.parse({{regions.reg8|safe}}),
+      mydata9 = JSON.parse({{regions.reg9|safe}}),
+      mydata10 = JSON.parse({{regions.reg10|safe}}),
+      mydata11 = JSON.parse({{regions.reg11|safe}}),
+      mydata12 = JSON.parse({{regions.reg12|safe}})]
+     
+      //mydata.forEach(element => console.log('data',element));
+      const mysource = new ol.source.Vector();
+      format= new ol.format.GeoJSON()
+
+      for (i=0;i<limitesAdministratives.length;i++){
+        mysource.addFeatures(format.readFeatures(limitesAdministratives[i], { featureProjection: 'EPSG:3857' }));
+      }
+      
+      //mysource.addFeatures(format.readFeatures("mydata", { featureProjection: 'EPSG:3857' }));
+      
+      const regions = new ol.layer.Vector({
+      title: 'regions of Morocco',
+      source: mysource,
+      style: new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          // color: symbolLineColor,
+          width: 1,
+         // lineDash: [4, 8]
+        }),
+        fill: new ol.style.Fill({
+          color: '#FFC100'
+        })
+      })});
+
+      // pour ajouter la couche des limites administratives (regions)
+      //map.addLayer(regions);
+      const labels = new ol.layer.Tile({
+        source: new ol.source.Stamen({layer:'terrain-labels'})
+      })
+      
+      map.addLayer(regions);
+      map1.addLayer(regions);
+      //map.addLayer(labels);
+      
+      
+      
+      
+      console.log('hello',mydata1)
+
+      // end of map code
+
+      //***************start the code of interactions with the map****************
+     
+      
+      //const selectSingleClick = new ol.interaction.Select();
+      //map.addInteraction(selectSingleClick)
+      
+      const mysource1 = new ol.source.Vector();
+      var e = document.getElementById("comboRegions");
+      function getSelectedLayer(){
+        mysource1.clear()
+        mysource2.clear()
+        var x = document.getElementById("comboRegions").value;
+        console.log(x)
+        if (x==1||x==2||x==3||x==4||x==5||x==6||x==7||x==8||x==9||x==10||x==11||x==12){
+          mysource1.addFeatures(format.readFeatures(limitesAdministratives[x-1], { featureProjection: 'EPSG:3857' }));
+
+        }
+      }
+     
+        
+      // end of interactions
+      //****************************************************
+      const mysource2 = new ol.source.Vector();
+      var e1 = document.getElementById("comboRegions1");
+      var stations =  JSON.parse('{{regions.stations|safe}}')
+      var dataRegions =  JSON.parse('{{regions.dataRegions|safe}}')
+      function getSelectedStation(){
+        mysource2.clear()
+        mysource1.clear()
+        var x1 = document.getElementById("comboRegions1");
+        var station_name = x1.options[x1.selectedIndex].text;
+        //console.log('booo',station_name)
+        for(i=0;i<stations.length;i++){
+          //console.log('booo1',stations[i].nom)
+          if(stations[i].nom==station_name){
+            //console.log('kakakakka',stations[i].nom)
+            for(j=0;j<dataRegions.length;j++){
+              //console.log('fafafaf',dataRegions[j].id)
+              if(dataRegions[j].id==stations[i].id_region){
+                //console.log('whooooore',stations[i].id_region)
+                mysource2.addFeatures(format.readFeatures(limitesAdministratives[j], { featureProjection: 'EPSG:3857' }));
+              }
+                
+            }
+          }
+          
+        }
+      }
+
+      format= new ol.format.GeoJSON()
+      const selectedStation = new ol.layer.Vector({
+        title: 'selected station',
+        source: mysource2,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            // color: symbolLineColor,
+            width: 1,
+           // lineDash: [4, 8]
+          }),
+          fill: new ol.style.Fill({
+            color: '#1FE1C1'
+          })
+        })});
+     
+      //****************************************************
+
+      //to show the selected layer from the comboBox
+      
+      format= new ol.format.GeoJSON()
+      const selectedLayer = new ol.layer.Vector({
+        title: 'selected region',
+        source: mysource1,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            // color: symbolLineColor,
+            width: 1,
+           // lineDash: [4, 8]
+          }),
+          fill: new ol.style.Fill({
+            color: '#1FE1C1'
+          })
+      })});
+      map.addLayer(selectedLayer)
+      map1.addLayer(selectedLayer)
+      map1.addLayer(selectedStation)
+      map.addLayer(selectedStation)
+      //the end of the code used to show the selected layer from the comboBox
+
+    </script>
+  <!--*********************End of the code used for the map and other stuff****************************-->
+        
+
+
+
+
+        
+ <!--*********************Here is the code of all charts we will be using****************************-->
+ 
+
+    <script>
+      
+      function showChart() {
+        setTimeout(function(){ map.updateSize(); }, 300);
+        document.getElementById('smallMap').style.display = "block";
+        document.getElementById('bigMap').style.display = "none";
+        document.getElementById('temperature').style.display = "block";
+        document.getElementById('temperature1').style.display = "none";
+        //document.getElementById('textClimate').style.display = "none";
+        regions3 = JSON.parse('{{regions.data1|safe}}')// c'est la data récupérée qu'on a travaillé avec
+        var x = document.getElementById("comboRegions").value;
+        var x1 = document.getElementById("comboRegions");
+        var region_name = x1.options[x1.selectedIndex].text;
+        var y = document.getElementById("comboYear");
+        var year = y.options[y.selectedIndex].text;
+        console.log('x',x,typeof(x))
+        console.log('y',year,typeof(year))
+        var xValues =['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Novembre','Décembre']
+        var data_min = []
+        var data_max = []
+        var data_moyenne = []
+        //var xValues =[]
+        
+        console.log('hello',regions3,typeof(regions3))
+        
+        j=0;
+        for (i=0;i<regions3.length;i++){
+            // Au lieu de 11 on va ecrire l'id obtenu apartir de combobox
+            if(regions3[i].id_region==x && regions3[i].year==year){
+              // xValues[j]= regions3[i].month
+                data_min[j] = regions3[i].valeur_min
+                data_max[j] = regions3[i].valeur_max
+                data_moyenne[j] = regions3[i].valeur_moyenne
+                j++
+                
+            }         
+        };
+        
+        
+        
+        console.log('hello',xValues,typeof(xValues))
+        new Chart("myChart", {
+            
+            type: "line",
+            data: {
+            labels: xValues,
+            datasets: [{ 
+                data: data_max,// c'est la données ajoutées,representation du max
+                borderColor: "red",
+                fill: false,
+                label:"Température maximale"
+                }, { 
+                data: data_min,// c'est la données ajoutées,representation du min
+                borderColor: "green",
+                fill: false,
+                label:"Température minimale"
+                }, { 
+                data: data_moyenne,// c'est la données ajoutées,representation du moyenne
+                borderColor: "blue",
+                fill: false,
+                label:"Température moyenne"
+                }]
+              },
+            options: {
+                legend: {
+                      display: true,
+                      position: 'bottom',
+                      labels: {
+                          usePointStyle: true,
+                          fontColor: 'black',
+                          fontSize:9,
+                          fontFamily : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                      }
+                  },
+
+                  title: {
+                      display: true,
+                      text: "Températures dans la région "+region_name,
+                      fontSize:12,
+                  },
+                scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          },
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'Température',
+                              fontSize:10,
+                          }
+                      }],
+                      /*xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'mois',
+                            fontSize:10,
+                            padding:{
+                              top:20,
+                            }
+                        },
+                          
+                      }]*/
+              
+                  }
+              }
+        });
+            
+      }
+
+      function showChart_Precipitations() {
+        document.getElementById('smallMap').style.display = "block";
+        setTimeout(function(){ map1.updateSize(); }, 300); 
+        document.getElementById('bigMap').style.display = "none";
+        document.getElementById('precipitation1').style.display = "none";
+        document.getElementById('precipitation').style.display = "block";
+        //document.getElementById('textClimate').style.display = "none";
+        //document.getElementById('temperature').style.display = "none";
+        regions3 = JSON.parse('{{regions.data2|safe}}')// c'est la data récupérée qu'on a travaillé avec
+        var x = document.getElementById("comboRegions").value;
+        var x1 = document.getElementById("comboRegions");
+        var region_name = x1.options[x1.selectedIndex].text;
+        var y = document.getElementById("comboYear");
+        var year = y.options[y.selectedIndex].text;
+        console.log('x',x,typeof(x))
+        console.log('y',year,typeof(year))
+        var xValues =['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Novembre','Décembre']
+        //var xValues =[]
+        var data_min = []
+        var data_max = []
+        var data_moyenne = []
+        
+        console.log('hello',regions3,typeof(regions3))
+        
+        j=0;
+        for (i=0;i<regions3.length;i++){
+            // Au lieu de 11 on va ecrire l'id obtenu apartir de combobox
+            if(regions3[i].id_region==x && regions3[i].year==year){
+                //xValues[j]= regions3[i].month
+                data_min[j] = regions3[i].valeur_min
+                data_max[j] = regions3[i].valeur_max
+                data_moyenne[j] = regions3[i].valeur_moyenne
+                j++
+                
+            }
+            
+        };
+        
+        
+        
+        console.log('hello',xValues,typeof(xValues))
+        new Chart("myChartPrecipitation", {
+            
+            type: "line",
+            data: {
+            labels: xValues,
+            datasets: [{ 
+                data: data_max,// c'est la données ajoutées,representation du max
+                borderColor: "red",
+                fill: false,
+                label:"Precipitations maximales"
+                }, { 
+                data: data_min,// c'est la données ajoutées,representation du min
+                borderColor: "green",
+                fill: false,
+                label:"Precipitations minimales"
+                }, { 
+                data: data_moyenne,// c'est la données ajoutées,representation du moyenne
+                borderColor: "blue",
+                fill: false,
+                label:"Precipitations moyennes"
+                }]
+              },
+            options: {
+                legend: {
+                      display: true,
+                      position: 'bottom',
+                      labels: {
+                          usePointStyle: true,
+                          fontColor: 'black',
+                          fontSize:9,
+                          fontFamily : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                      }
+                  },
+
+                  title: {
+                      display: true,
+                      text: "Précipitations dans la région "+region_name,
+                      fontSize:12,
+                  },
+                scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          },
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'Précipitations (mm)',
+                              fontSize:10,
+                          }
+                      }],
+                      /*xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'mois',
+                            fontSize:10,
+                            padding:{
+                              top:20,
+                            }
+                        },
+                          
+                      }]*/
+              
+                  }
+                }
+        });
+      }
+
+      //chart precipitations by station
+      
+      //chart precipitations by station
+          
+          
+      </script>
+      <!--charts of indicators-->
+     
+      <script>
+       
+        function showIndicators(){
+          var x = document.getElementById("comboRegions").value;
+          var x1 = document.getElementById("comboRegions");
+          var z = document.getElementById("comboRegions1");
+          var station_name = z.options[z.selectedIndex].text;
+          var y = document.getElementById("comboYear");
+          var year = y.options[y.selectedIndex].text;
+  
+          //to show the div that contains the indicators
+          //var btnIndicateurs = document.getElementById("otherIndicators");
+          document.getElementById('indicatorsTable').style.display = "block";
+            
+          
+          //Indicators charts
+          var i=0
+          j=0
+          var indicateurs = JSON.parse('{{regions.dataIndicateur1|safe}}')
+          var stations =  JSON.parse('{{regions.stations|safe}}')
+          var xValues = [];
+          var yValues = [];
+          console.log(indicateurs)
+          for (i=0;i<indicateurs.length;i++){
+            console.log('lalala',x)
+            if(indicateurs[i].id_region==x){
+              yValues[i]=indicateurs[i].valeur
+              xValues[i]=indicateurs[i].secteur 
+            }
+          }
+          
+          console.log(x)
+  
+  
+          
+          var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "yellow",
+            "green"
+          ];
+          //var yValues = [55, 49, 44, 24, 15];
+          new Chart("myChart2", {
+            type: "pie",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Répartition entre secteurs de l'effort global d'atténuation de GES en (Gg)"
+              }
+            }
+          });
+
+
+        }
+      </script>
+
+      <!--Charts related to stations-->
+      <script>
+
+        function showChart_Precipitations_Station() {
+          document.getElementById('smallMap').style.display = "block";
+          setTimeout(function(){ map.updateSize(); }, 300); 
+          document.getElementById('bigMap').style.display = "none";
+          document.getElementById('precipitation1').style.display = "block";
+          document.getElementById('precipitation').style.display = "none";
+          //document.getElementById('precipitation').style.display = "none";
+          //document.getElementById('temperature').style.display = "none";
+          regions3 = JSON.parse('{{regions.data2|safe}}')// c'est la data récupérée qu'on a travaillé avec
+          stations =  JSON.parse('{{regions.stations|safe}}')
+          var x = document.getElementById("comboRegions1").value;
+          var x1 = document.getElementById("comboRegions1");
+          var station_name = x1.options[x1.selectedIndex].text;
+          var y = document.getElementById("comboYear1");
+          var year = y.options[y.selectedIndex].text;
+          var xValues =['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Novembre','Décembre']
+          //var xValues =[]
+          var data_min = []
+          var data_max = []
+          var data_moyenne = []
+          
+          //console.log('hello',regions3,typeof(regions3))
+          console.log(station_name)
+         
+          j=0;
+          for (k=0;k<stations.length;k++) {
+            for(i=0;i<regions3.length;i++) {
+              console.log(stations.id)
+              // Au lieu de 11 on va ecrire l'id obtenu apartir de combobox
+              if(regions3[i].id_region==stations[k].id_region&& regions3[i].year==year&&stations[k].nom==station_name){
+                  //xValues[j]= regions3[i].month
+                  data_min[j] = regions3[i].valeur_min
+                  data_max[j] = regions3[i].valeur_max
+                  data_moyenne[j] = regions3[i].valeur_moyenne
+                  j++
+                  
+              }
+            }
+          };
+          
+          
+          console.log('bitch',data_min,typeof(xValues))
+          console.log('hello',xValues,typeof(xValues))
+          new Chart("myChartPrecipitation1", {
+              
+              type: "line",
+              data: {
+              labels: xValues,
+              datasets: [{ 
+                  data: data_max,// c'est la données ajoutées,representation du max
+                  borderColor: "red",
+                  fill: false,
+                  label:"Precipitations maximales"
+                  }, { 
+                  data: data_min,// c'est la données ajoutées,representation du min
+                  borderColor: "green",
+                  fill: false,
+                  label:"Precipitations minimales"
+                  }, { 
+                  data: data_moyenne,// c'est la données ajoutées,representation du moyenne
+                  borderColor: "blue",
+                  fill: false,
+                  label:"Precipitations moyennes"
+                  }]
+                },
+              options: {
+                  legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            fontColor: 'black',
+                            fontSize:9,
+                            fontFamily : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                        }
+                    },
+  
+                    title: {
+                        display: true,
+                        text: "Station de"+station_name,
+                        fontSize:12,
+                    },
+                  scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Précipitations (mm)',
+                                fontSize:10,
+                            }
+                        }],
+                        /*xAxes: [{
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'mois',
+                              fontSize:10,
+                              padding:{
+                                top:20,
+                              }
+                          },
+                            
+                        }]*/
+                
+                    }
+                  }
+          });
+        }
+        
+
+        function showChart1() {
+          setTimeout(function(){ map.updateSize(); }, 300);
+          document.getElementById('smallMap').style.display = "block";
+          document.getElementById('bigMap').style.display = "none";
+          document.getElementById('temperature1').style.display = "block";
+          document.getElementById('temperature').style.display = "none";
+          //document.getElementById('textClimate').style.display = "none";
+          regions3 = JSON.parse('{{regions.data1|safe}}')
+          stations =  JSON.parse('{{regions.stations|safe}}')
+          var x = document.getElementById("comboRegions1").value;
+          var x1 = document.getElementById("comboRegions1");
+          var station_name = x1.options[x1.selectedIndex].text;
+          var y = document.getElementById("comboYear1");
+          var year = y.options[y.selectedIndex].text;
+          console.log('x',x,typeof(x))
+          console.log('y',year,typeof(year))
+          var xValues =['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Novembre','Décembre']
+          var data_min = []
+          var data_max = []
+          var data_moyenne = []
+          //var xValues =[]
+          
+          console.log('helloooo',station_name,typeof(regions3))
+          
+          j=0;
+          for (k=0;k<stations.length;k++) {
+            for(i=0;i<regions3.length;i++) {
+              console.log(stations.id)
+              // Au lieu de 11 on va ecrire l'id obtenu apartir de combobox
+              if(regions3[i].id_region==stations[k].id_region&& regions3[i].year==year&&stations[k].nom==station_name){
+                  //xValues[j]= regions3[i].month
+                  data_min[j] = regions3[i].valeur_min
+                  data_max[j] = regions3[i].valeur_max
+                  data_moyenne[j] = regions3[i].valeur_moyenne
+                  j++
+                  
+              }
+            }
+          };
+          
+          
+          
+          console.log('hello',xValues,typeof(xValues))
+          new Chart("myChart1", {
+              
+              type: "line",
+              data: {
+              labels: xValues,
+              datasets: [{ 
+                  data: data_max,// c'est la données ajoutées,representation du max
+                  borderColor: "red",
+                  fill: false,
+                  label:"Température maximale"
+                  }, { 
+                  data: data_min,// c'est la données ajoutées,representation du min
+                  borderColor: "green",
+                  fill: false,
+                  label:"Température minimale"
+                  }, { 
+                  data: data_moyenne,// c'est la données ajoutées,representation du moyenne
+                  borderColor: "blue",
+                  fill: false,
+                  label:"Température moyenne"
+                  }]
+                },
+              options: {
+                  legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            fontColor: 'black',
+                            fontSize:9,
+                            fontFamily : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                        }
+                    },
+  
+                    title: {
+                        display: true,
+                        text: "Station de "+station_name,
+                        fontSize:12,
+                    },
+                  scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Température',
+                                fontSize:10,
+                            }
+                        }],
+                        /*xAxes: [{
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'mois',
+                              fontSize:10,
+                              padding:{
+                                top:20,
+                              }
+                          },
+                            
+                        }]*/
+                
+                    }
+                }
+          });
+              
+        }
+      </script>
+
+
+      <!--to show region buttons/station buttons-->
+      <script>
+        btnRegion.onclick = function(){
+          document.getElementById('mainselect1').style.display = "none";
+          //document.getElementById('smallMap').style.display = "block";
+          //document.getElementById('bigMap').style.display = "none";
+          var x = document.getElementById('mainselect')
+          if (x.style.display === "none") {
+              x.style.display = "block";   
+          } 
+          setTimeout(function(){ map1.updateSize(); }, 300); 
+        }
+
+        btnStation.onclick = function(){
+          document.getElementById('mainselect').style.display = "none";
+          var x = document.getElementById('mainselect1')
+          if (x.style.display === "none") {
+              x.style.display = "block";   
+          } 
+          setTimeout(function(){ map1.updateSize(); }, 300);
+        }
+
+        var btn = document.getElementsByClassName("btnConsultation");
+        for (i = 0; i < btn.length; i++) {
+          btn[i].addEventListener("click", function() {
+              this.classList.toggle("active2");
+             
+          })
+          
+        }
+      </script>
+        
+    <!--*************************************End of the code used for the charts********************************-->
+    
+ 
+  </body>
+</html>
